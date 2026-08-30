@@ -29,7 +29,7 @@ public:
 
             if (canPlace(stalls, k, mid)) {
                 ans = mid;
-                low = mid + 1;   // try larger minimum distance
+                low = mid + 1;
             } else {
                 high = mid - 1;
             }
