@@ -1,0 +1,21 @@
+/*
+class Node {
+  public:
+    int data;
+    Node *next;
+
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+*/
+
+class Solution {
+  public:
+    Node *insertAtFront(Node *head, int x) {
+        Node *newNode = new Node(x);
+        newNode->next = head;
+        return newNode;
+    }
+};
