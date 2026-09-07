@@ -11,36 +11,37 @@
 };
 */
 class Solution {
-  public:
+public:
     Node* segregate(Node* head) {
-        // code here
-        int freq[3]={0};
-        Node* temp=head;
-        while(temp){
-            freq[temp->data]++;
-            temp=temp->next;
+        if (!head || !head->next)
+            return head;
+
+        Node zeroDummy(0), oneDummy(0), twoDummy(0);
+
+        Node* zero = &zeroDummy;
+        Node* one = &oneDummy;
+        Node* two = &twoDummy;
+
+        Node* curr = head;
+
+        while (curr) {
+            if (curr->data == 0) {
+                zero->next = curr;
+                zero = zero->next;
+            } else if (curr->data == 1) {
+                one->next = curr;
+                one = one->next;
+            } else {
+                two->next = curr;
+                two = two->next;
+            }
+            curr = curr->next;
         }
-        temp=head;
-        while(freq[0]!=0){
-            temp->data=0;
-            temp=temp->next;
-            freq[0]--;
-            
-            
-        }
-        while(freq[1]!=0){
-            temp->data=1;
-            temp=temp->next;
-            freq[1]--;
-            
-            
-        }while(freq[2]!=0){
-            temp->data=2;
-            temp=temp->next;
-            freq[2]--;
-            
-            
-        }
-        return head;
+
+        zero->next = oneDummy.next ? oneDummy.next : twoDummy.next;
+        one->next = twoDummy.next;
+        two->next = nullptr;
+
+        return zeroDummy.next;
     }
 };
