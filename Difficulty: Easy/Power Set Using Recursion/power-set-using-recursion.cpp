@@ -5,11 +5,7 @@ class Solution {
             ans.push_back(curr);
             return;
         }
-
-        // Take s[i]
         powerset(curr + s[i], s, i + 1, n, ans);
-
-        // Don't take s[i]
         powerset(curr, s, i + 1, n, ans);
     }
 
