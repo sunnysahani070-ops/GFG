@@ -5,7 +5,6 @@ class Solution {
 public:
     
     void insertSorted(stack<int>& st, int x) {
-        // Correct position found
         if (st.empty() || st.top() <= x) {
             st.push(x);
             return;
