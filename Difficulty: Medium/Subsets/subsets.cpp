@@ -12,7 +12,6 @@ class Solution {
     };
   public:
     vector<vector<int>> subsets(vector<int>& arr) {
-        // code here
         vector<int> temp;
         vector<vector<int>> ans;
         subset(arr,0,arr.size(),temp,ans);
