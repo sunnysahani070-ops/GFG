@@ -1,18 +1,19 @@
 class Solution {
-    void powerset(string curr, string &s, int i, int n,
-                  vector<string> &ans) {
-        if (i == n) {
-            ans.push_back(curr);
-            return;
-        }
-        powerset(curr + s[i], s, i + 1, n, ans);
-        powerset(curr, s, i + 1, n, ans);
-    }
-
 public:
     vector<string> powerSet(string s) {
+        int n = s.length();
+        int totalSets = 1 << n;
         vector<string> ans;
-        powerset("", s, 0, s.size(), ans);
+        for (int i = 0; i < totalSets; i++) {
+            string curr = "";
+            for (int j = 0; j < n; j++) {
+                if (i & (1 << j)) {
+                    curr += s[j];
+                }
+            }
+            ans.push_back(curr);
+        }
+
         return ans;
     }
 };
