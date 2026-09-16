@@ -3,7 +3,12 @@ public:
     vector<int> primeFactors(int n) {
         vector<int> ans;
 
-        for (int i = 2; i * i <= n; i++) {
+        while ((n & 1) == 0) {
+            ans.push_back(2);
+            n >>= 1; 
+        }
+
+        for (int i = 3; i * i <= n; i += 2) {
             while (n % i == 0) {
                 ans.push_back(i);
                 n /= i;
